@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.pdsys.dao.FileTransCodingInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.pdsys.bean.FileTransCodingInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="file_baseinfo_id" property="fileBaseinfoId" jdbcType="BIGINT" />
+    <result column="file_transcoding_path" property="fileTranscodingPath" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_baseinfo_id, file_transcoding_path, create_user_id, create_time, update_user_id,
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from file_transcoding_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from file_transcoding_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demo.pdsys.bean.FileTransCodingInfo" >
+    insert into file_transcoding_info (id, file_baseinfo_id, file_transcoding_path,
+      create_user_id, create_time, update_user_id,
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{fileBaseinfoId,jdbcType=BIGINT}, #{fileTranscodingPath,jdbcType=VARCHAR},
+      #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.pdsys.bean.FileTransCodingInfo" >
+    insert into file_transcoding_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileBaseinfoId != null" >
+        file_baseinfo_id,
+      </if>
+      <if test="fileTranscodingPath != null" >
+        file_transcoding_path,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fileBaseinfoId != null" >
+        #{fileBaseinfoId,jdbcType=BIGINT},
+      </if>
+      <if test="fileTranscodingPath != null" >
+        #{fileTranscodingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.pdsys.bean.FileTransCodingInfo" >
+    update file_transcoding_info
+    <set >
+      <if test="fileBaseinfoId != null" >
+        file_baseinfo_id = #{fileBaseinfoId,jdbcType=BIGINT},
+      </if>
+      <if test="fileTranscodingPath != null" >
+        file_transcoding_path = #{fileTranscodingPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.pdsys.bean.FileTransCodingInfo" >
+    update file_transcoding_info
+    set file_baseinfo_id = #{fileBaseinfoId,jdbcType=BIGINT},
+      file_transcoding_path = #{fileTranscodingPath,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

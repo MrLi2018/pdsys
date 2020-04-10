@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.pdsys.dao.SysFileOperatorLogMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.pdsys.bean.SysFileOperatorLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="file_baseinfo_id" property="fileBaseinfoId" jdbcType="BIGINT" />
+    <result column="file_optype_dic_value" property="fileOptypeDicValue" jdbcType="BIT" />
+    <result column="create_user_id" property="createUserId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_baseinfo_id, file_optype_dic_value, create_user_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_file_operator_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_file_operator_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demo.pdsys.bean.SysFileOperatorLog" >
+    insert into sys_file_operator_log (id, file_baseinfo_id, file_optype_dic_value,
+      create_user_id, create_time)
+    values (#{id,jdbcType=BIGINT}, #{fileBaseinfoId,jdbcType=BIGINT}, #{fileOptypeDicValue,jdbcType=BIT},
+      #{createUserId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.pdsys.bean.SysFileOperatorLog" >
+    insert into sys_file_operator_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileBaseinfoId != null" >
+        file_baseinfo_id,
+      </if>
+      <if test="fileOptypeDicValue != null" >
+        file_optype_dic_value,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fileBaseinfoId != null" >
+        #{fileBaseinfoId,jdbcType=BIGINT},
+      </if>
+      <if test="fileOptypeDicValue != null" >
+        #{fileOptypeDicValue,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.pdsys.bean.SysFileOperatorLog" >
+    update sys_file_operator_log
+    <set >
+      <if test="fileBaseinfoId != null" >
+        file_baseinfo_id = #{fileBaseinfoId,jdbcType=BIGINT},
+      </if>
+      <if test="fileOptypeDicValue != null" >
+        file_optype_dic_value = #{fileOptypeDicValue,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.pdsys.bean.SysFileOperatorLog" >
+    update sys_file_operator_log
+    set file_baseinfo_id = #{fileBaseinfoId,jdbcType=BIGINT},
+      file_optype_dic_value = #{fileOptypeDicValue,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

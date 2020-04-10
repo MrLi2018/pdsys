@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: /rt/api
+  port: 8080
+spring:
+  datasource:
+    druid:
+      username: root
+      password: root
+      url: jdbc:mysql:///pdsys?serverTimezone=Asia/Shanghai
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/mapping/*Mapper.xml
+logging:
+  level:
+    com.demo.pdsys.dao: debug

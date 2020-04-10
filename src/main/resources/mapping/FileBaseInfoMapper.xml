@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.pdsys.dao.FileBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.pdsys.bean.FileBaseInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="VARCHAR" />
+    <result column="file_type_dict_value" property="fileTypeDictValue" jdbcType="BIT" />
+    <result column="file_deleted_flag" property="fileDeletedFlag" jdbcType="BIT" />
+    <result column="file_name_is_encryption" property="fileNameIsEncryption" jdbcType="BIT" />
+    <result column="file_path_is_encryption" property="filePathIsEncryption" jdbcType="BIT" />
+    <result column="file_is_setting_keywords" property="fileIsSettingKeywords" jdbcType="BIT" />
+    <result column="file_upload_user_name" property="fileUploadUserName" jdbcType="CHAR" />
+    <result column="file_upload_time" property="fileUploadTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_name" property="updateUserName" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_name, file_path, file_size, file_type_dict_value, file_deleted_flag, file_name_is_encryption,
+    file_path_is_encryption, file_is_setting_keywords, file_upload_user_name, file_upload_time,
+    update_user_id, update_time, update_user_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from file_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from file_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.demo.pdsys.bean.FileBaseInfo" >
+    insert into file_base_info (id, file_name, file_path,
+      file_size, file_type_dict_value, file_deleted_flag,
+      file_name_is_encryption, file_path_is_encryption, file_is_setting_keywords,
+      file_upload_user_name, file_upload_time, update_user_id,
+      update_time, update_user_name)
+    values (#{id,jdbcType=BIGINT}, #{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR},
+      #{fileSize,jdbcType=VARCHAR}, #{fileTypeDictValue,jdbcType=BIT}, #{fileDeletedFlag,jdbcType=BIT},
+      #{fileNameIsEncryption,jdbcType=BIT}, #{filePathIsEncryption,jdbcType=BIT}, #{fileIsSettingKeywords,jdbcType=BIT},
+      #{fileUploadUserName,jdbcType=CHAR}, #{fileUploadTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUserName,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.pdsys.bean.FileBaseInfo" >
+    insert into file_base_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="fileTypeDictValue != null" >
+        file_type_dict_value,
+      </if>
+      <if test="fileDeletedFlag != null" >
+        file_deleted_flag,
+      </if>
+      <if test="fileNameIsEncryption != null" >
+        file_name_is_encryption,
+      </if>
+      <if test="filePathIsEncryption != null" >
+        file_path_is_encryption,
+      </if>
+      <if test="fileIsSettingKeywords != null" >
+        file_is_setting_keywords,
+      </if>
+      <if test="fileUploadUserName != null" >
+        file_upload_user_name,
+      </if>
+      <if test="fileUploadTime != null" >
+        file_upload_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserName != null" >
+        update_user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="fileTypeDictValue != null" >
+        #{fileTypeDictValue,jdbcType=BIT},
+      </if>
+      <if test="fileDeletedFlag != null" >
+        #{fileDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="fileNameIsEncryption != null" >
+        #{fileNameIsEncryption,jdbcType=BIT},
+      </if>
+      <if test="filePathIsEncryption != null" >
+        #{filePathIsEncryption,jdbcType=BIT},
+      </if>
+      <if test="fileIsSettingKeywords != null" >
+        #{fileIsSettingKeywords,jdbcType=BIT},
+      </if>
+      <if test="fileUploadUserName != null" >
+        #{fileUploadUserName,jdbcType=CHAR},
+      </if>
+      <if test="fileUploadTime != null" >
+        #{fileUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserName != null" >
+        #{updateUserName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.pdsys.bean.FileBaseInfo" >
+    update file_base_info
+    <set >
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="fileTypeDictValue != null" >
+        file_type_dict_value = #{fileTypeDictValue,jdbcType=BIT},
+      </if>
+      <if test="fileDeletedFlag != null" >
+        file_deleted_flag = #{fileDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="fileNameIsEncryption != null" >
+        file_name_is_encryption = #{fileNameIsEncryption,jdbcType=BIT},
+      </if>
+      <if test="filePathIsEncryption != null" >
+        file_path_is_encryption = #{filePathIsEncryption,jdbcType=BIT},
+      </if>
+      <if test="fileIsSettingKeywords != null" >
+        file_is_setting_keywords = #{fileIsSettingKeywords,jdbcType=BIT},
+      </if>
+      <if test="fileUploadUserName != null" >
+        file_upload_user_name = #{fileUploadUserName,jdbcType=CHAR},
+      </if>
+      <if test="fileUploadTime != null" >
+        file_upload_time = #{fileUploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserName != null" >
+        update_user_name = #{updateUserName,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.pdsys.bean.FileBaseInfo" >
+    update file_base_info
+    set file_name = #{fileName,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=VARCHAR},
+      file_type_dict_value = #{fileTypeDictValue,jdbcType=BIT},
+      file_deleted_flag = #{fileDeletedFlag,jdbcType=BIT},
+      file_name_is_encryption = #{fileNameIsEncryption,jdbcType=BIT},
+      file_path_is_encryption = #{filePathIsEncryption,jdbcType=BIT},
+      file_is_setting_keywords = #{fileIsSettingKeywords,jdbcType=BIT},
+      file_upload_user_name = #{fileUploadUserName,jdbcType=CHAR},
+      file_upload_time = #{fileUploadTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_name = #{updateUserName,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
